@@ -1,11 +1,22 @@
 //Preenchimento da tabela com os dados do form
 function appendRow() {
 
-    $('#submit-form').click(function teste(e) {
+    $('#submit-form').click((e) => {
         e.preventDefault();
-        alert('foi')
-        $("<table>")
-            .append("default " + event.type + " prevented")
+        // alert('foi');
+        $("<tbody>")
+            .append(`<tr>
+            <th scope="row">${'id'}</th>
+            <td>${''}</td>
+            <td>${''}</td>
+            <td>${''}</td>
+            <td>${''}</td>
+            <td>${''}</td>
+            <td><i title="vamos Para cima" class="fas fa-sort-up"></i></td>
+            <td><i title="vamos para baixo" class="fas fa-sort-down"></i></td>
+            <td><i title="vamos para baixo" class="far fa-edit"></i></td>
+            <td><i title="Excluir" class="fas fa-trash-alt"></i></td>
+        </tr>`)
             .appendTo("#table");
     });
 }
