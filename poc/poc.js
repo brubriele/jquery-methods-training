@@ -1,23 +1,21 @@
 //Preenchimento da tabela com os dados do form
+// Cálculo do IMC no insert dos dados
+// Peso dividido pelo quadrado da altura: 70 / 2,89 = 24,22
+const id = []
 function appendRow() {
-
-    $('#submit-form').click((e) => {
+    $('#submit-form').click(function generateRow(e) {
         e.preventDefault();
-        // alert('foi');
-        // let users = []
-        let nome = $( "input[type=text][name=nome]" ).val();
-        let sobrenome = $( "input[type=text][name=sobrenome]" ).val();
-        let peso = Number($( "input[type=text][name=peso]" ).val());
-        let altura = Number($( "input[type=text][name=altura]" ).val());
-        // Peso dividido pelo quadrado da altura: 70 / 2,89 = 24,22
-        let imc = (peso / (altura * altura)) ;
-        // users.push(nome)
-        let teste = Object.assign({}, appendRow());
-
+        let nome = $("input[type=text][name=nome]").val();
+        let sobrenome = $("input[type=text][name=sobrenome]").val();
+        let peso = Number($("input[type=text][name=peso]").val());
+        let altura = Number($("input[type=text][name=altura]").val());
         
+        let imc = (peso / (altura * altura));
+
+
         $("<tbody>")
-            .append(`<tr>
-            <th scope="row">${'id'}</th>
+            .append(`<tr class="teste">
+            <th scope="row" data-id="number">${id.length + 1}</th>
             <td>${nome}</td>
             <td>${sobrenome}</td>
             <td>${peso}</td>
@@ -29,17 +27,18 @@ function appendRow() {
             <td><i title="Excluir" class="fas fa-trash-alt"></i></td>
         </tr>`)
             .appendTo("#table");
-            console.log(teste);
     });
-   
+
+}
+
+function generateId() {
+    $("#submit-form").click(function () {
+        let dataId = parseInt($(this).attr("data-id"));
+        id.push(isNaN(dataId) ? 0 : dataId)
+    });
 }
 
 
-    // Captura dados do form
-function getFormData() {
-    let nome = $( "input[type=text][name=nome]" ).val();
-}
-// Cálculo do IMC no insert dos dados
 
 // Para cima, para baixo no limite certo
 
@@ -51,5 +50,5 @@ function getFormData() {
 
 (() => {
     appendRow();
-    getFormData();
+    generateId();
 })();
