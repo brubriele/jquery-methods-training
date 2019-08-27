@@ -9,10 +9,7 @@ function appendRow() {
         let sobrenome = $("input[type=text][name=sobrenome]").val();
         let peso = Number($("input[type=text][name=peso]").val());
         let altura = Number($("input[type=text][name=altura]").val());
-        
         let imc = (peso / (altura * altura));
-
-
         $("<tbody>")
             .append(`<tr class="teste">
             <th scope="row" data-id="number">${id.length + 1}</th>
@@ -31,8 +28,6 @@ function appendRow() {
 
 }
 
-
-
 function generateId() {
     $("#submit-form").click(function () {
         let dataId = parseInt($(this).attr("data-id"));
@@ -40,14 +35,9 @@ function generateId() {
     });
 }
 
-
-
 // Para cima, para baixo no limite certo
-
 //Delete linha
-
 //Edit in modal
-
 //Ordenar por categorias ** hacker edition
 
 (() => {
