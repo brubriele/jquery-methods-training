@@ -31,6 +31,8 @@ function appendRow() {
 
 }
 
+
+
 function generateId() {
     $("#submit-form").click(function () {
         let dataId = parseInt($(this).attr("data-id"));
