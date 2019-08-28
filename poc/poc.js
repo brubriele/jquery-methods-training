@@ -10,8 +10,9 @@ function appendRow() {
         let peso = Number($("input[type=text][name=peso]").val());
         let altura = Number($("input[type=text][name=altura]").val());
         let imc = (peso / (altura * altura));
+        imc = Number(imc).toFixed(2);
         $("<tbody>")
-            .append(`<tr class="teste">
+            .append(`<tr>
             <th scope="row" data-id="number">${id.length + 1}</th>
             <td>${nome}</td>
             <td>${sobrenome}</td>
