@@ -10,7 +10,7 @@ function appendRow() {
         let peso = Number($("input[type=text][name=peso]").val());
         let altura = Number($("input[type=text][name=altura]").val());
         let imc = (peso / (altura * altura));
-        imc = Number(imc).toFixed(2);
+        imc = Number(imc).toFixed(2);   
         $("<tbody>")
             .append(`<tr>
             <th scope="row" data-id="number">${id.length + 1}</th>
@@ -25,11 +25,15 @@ function appendRow() {
             <td><i title="Excluir" class="fas fa-trash-alt"></i></td>
         </tr>`)
             .appendTo("#table");
+            // replaceRow();
     });
-
 }
 
-
+function replaceRow (e) {
+    e.preventDefault();
+    // let content = 
+    $('.fa-sort-down').click(() => alert('oi'));
+}
 
 function generateId() {
     $("#submit-form").click(function () {
@@ -41,6 +45,7 @@ function generateId() {
 
 
 // Para cima, para baixo no limite certo
+
 
 //Delete linha
 
