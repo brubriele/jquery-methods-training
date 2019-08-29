@@ -11,7 +11,7 @@ function appendRow() {
         let altura = Number($("input[type=text][name=altura]").val());
         let imc = (peso / (altura * altura));
         imc = Number(imc).toFixed(2);
-        $("<tbody>")
+        let newData = $("<tbody>")
             .append($("<tr>")
                 .append("<th scope='row' data-id='number'>"+id.length+"</th>")
                 .append("<td>"+nome+"</td>")
@@ -24,7 +24,8 @@ function appendRow() {
                 .append("<td><i title='vamos para baixo' class='far fa-edit'></i></td>")
                 .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>"))
             .appendTo("#table");
-            replaceRow ()
+            $("body").data(newData)
+            replaceRow()
     });
     
 
