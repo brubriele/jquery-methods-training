@@ -24,15 +24,17 @@ function appendRow() {
                 .append("<td><i title='vamos para baixo' class='far fa-edit'></i></td>")
                 .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>"))
             .appendTo("#table");
+            replaceRow ()
     });
-
-    getDown();
+    
 
 }
 
-function getDown () {
-    $(".fa-sort-up").click(function (){alert("foi")})
+function replaceRow () {
+    $('.fa-sort-down').click(() => alert('oi'));
+    console.log($("th:nth-child(5) td").css("background-color", "red"))
 }
+
 
 function generateId() {
     $("#submit-form").click(function () {
