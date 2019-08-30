@@ -27,9 +27,9 @@ function appendRow() {
             .appendTo("#table");
             
     replaceRow();
-            // $("body").data(newData)
-            // $(".return-data").text($("body").data(newData))
-            // console.log(newData)
+            $("body").data(newData)
+            $(".return-data").text($("body").data(newData))
+            console.log(newData)
             
     });
   
