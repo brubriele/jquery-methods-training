@@ -36,7 +36,8 @@ function appendRow() {
 
 }
 
-function replaceRow(e) {
+function replaceRow(idRow) {
+    let idRow = 'teste'
     $('.fa-sort-down').click(() => 
         alert('oi')
     )
