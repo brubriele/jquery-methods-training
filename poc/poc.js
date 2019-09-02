@@ -11,40 +11,41 @@ function appendRow() {
         let altura = Number($("input[type=text][name=altura]").val());
         let imc = (peso / (altura * altura));
         imc = Number(imc).toFixed(2);
-        
+
         let newData = $("<tbody>")
             .append("<tr>")
-                .append("<th scope='row' data-id='number'>"+id.length+"</th>")
-                .append("<td>"+nome+"</td>")
-                .append("<td>"+sobrenome+"</td>")
-                .append("<td>"+peso+"</td>")
-                .append("<td>"+altura+"</td>")
-                .append("<td>"+imc+"</td>")
-                .append("<td><i data-key='"+id.length+"' title='vamos Para cima' class='fas fa-sort-up'></i></td>")
-                .append("<td><i title='vamos para baixo' class='fas fa-sort-down'></i></td>")
-                .append("<td><i title='vamos para baixo' class='far fa-edit'></i></td>")
-                .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>")
+            .append("<th scope='row' data-id='number'>" + id.length + "</th>")
+            .append("<td>" + nome + "</td>")
+            .append("<td>" + sobrenome + "</td>")
+            .append("<td>" + peso + "</td>")
+            .append("<td>" + altura + "</td>")
+            .append("<td>" + imc + "</td>")
+            .append("<td><i data-id='" + id.length + "' title='vamos Para cima' class='fas fa-sort-up'></i></td>")
+            .append("<td><i data-id='" + id.length + "' title='vamos para baixo' class='fas fa-sort-down'></i></td>")
+            .append("<td><i title='Edit' class='far fa-edit'></i></td>")
+            .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>")
             .appendTo("#table");
-            
-    replaceRow();
-            $("body").data(newData)
-            $(".return-data").text($("body").data(newData))
-            console.log(newData)
-            
+
+        replaceRow(e)
+        $("#table").data(newData);
+        alert($("#table").data("user1"));
+        console.log(newData)
+
     });
-  
+
 
 }
 
-function replaceRow () {
-    $('.fa-sort-down').click(() => alert('oi'));
-    console.log($("th:nth-child(5) td").css("background-color", "red"))
+function replaceRow(e) {
+    $('.fa-sort-down').click(() => 
+        alert('oi')
+    )
 }
 
 
 function generateId() {
     $("#submit-form").click(function () {
-        let dataId = parseInt($(this).attr("data-id"));
+        let dataId = parseInt($(this).attr("title"));
         id.push(isNaN(dataId) ? 0 : dataId)
     });
 }
