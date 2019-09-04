@@ -11,30 +11,48 @@ function appendRow() {
         let altura = Number($("input[type=text][name=altura]").val());
         let imc = (peso / (altura * altura));
         imc = Number(imc).toFixed(2);
-        $("<tbody>")
+        $("#table")
             .append($("<tr>")
-                .append("<th scope='row' data-id='number'>"+id.length+"</th>")
-                .append("<td>"+nome+"</td>")
-                .append("<td>"+sobrenome+"</td>")
-                .append("<td>"+peso+"</td>")
-                .append("<td>"+altura+"</td>")
-                .append("<td>"+imc+"</td>")
-                .append("<td><i data-key='"+id.length+"' title='vamos Para cima' class='fas fa-sort-up'></i></td>")
-                .append("<td><i title='vamos para baixo' class='fas fa-sort-down'></i></td>")
+                .append("<td scope='row' data-id='number'>" + id.length + "</td>")
+                .append("<td>" + nome + "</td>")
+                .append("<td>" + sobrenome + "</td>")
+                .append("<td>" + peso + "</td>")
+                .append("<td>" + altura + "</td>")
+                .append("<td>" + imc + "</td>")
+                .append("<td><i data-key='" + id.length + "' title='vamos Para cima' class='fas fa-sort-up'></i></td>")
+                .append("<td><i title='vamos para baixo' class='fas fa-sort-down table-down'></i></td>")
                 .append("<td><i title='vamos para baixo' class='far fa-edit'></i></td>")
                 .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>"))
-            .appendTo("#table");
-            replaceRow ()
+            .append("</tr>");
+        // .appendTo("#table");
+        replaceRow()
+        replaceRowDown()
+
     });
-    
+
 
 }
 
-function replaceRow () {
-    $('.fa-sort-down').click(() => alert('oi'));
-    console.log($("th:nth-child(5) td").css("background-color", "red"))
+function replaceRow() {
+    $('.fa-sort-up').click(function (event) {
+        event.preventDefault(); 
+        var row_index = $(this).parent().index();
+        console.log(row_index)
+        var row = $(this).parents('tr');
+        if (row.index() === 0) return; 
+        row.next().insertBefore(row);
+    });
 }
 
+function replaceRowDown() {
+    $('.table-down').click(function (event) {
+        event.preventDefault(); 
+        var row_index = $(this).parent().index();
+        console.log(row_index)
+        var row = $(this).parents('tr');
+        row.prev().insertAfter(row);
+    });
+}
 
 function generateId() {
     $("#submit-form").click(function () {
