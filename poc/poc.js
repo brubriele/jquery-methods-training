@@ -24,33 +24,26 @@ function appendRow() {
                 .append("<td><i title='vamos para baixo' class='far fa-edit'></i></td>")
                 .append("<td><i title='Excluir' class='fas fa-trash-alt'></i></td>"))
             .append("</tr>");
-        // .appendTo("#table");
-        replaceRow()
-        replaceRowDown()
-
+        replaceRowAll();
+        deleteRow()
     });
 
 
 }
 
-function replaceRow() {
-    $('.fa-sort-up').click(function (event) {
-        event.preventDefault(); 
-        var row_index = $(this).parent().index();
+function replaceRowAll() {
+    $('.table-down, .fa-sort-up').click(function () {
+        let row_index = $(this).closest('tr').index();
         console.log(row_index)
-        var row = $(this).parents('tr');
-        if (row.index() === 0) return; 
-        row.next().insertBefore(row);
-    });
-}
+        let row = $(this).closest('tr')
+        if (row.index() === 0) return;
 
-function replaceRowDown() {
-    $('.table-down').click(function (event) {
-        event.preventDefault(); 
-        var row_index = $(this).parent().index();
-        console.log(row_index)
-        var row = $(this).parents('tr');
-        row.prev().insertAfter(row);
+        if ('.table-down') {
+            row.next().insertBefore(row);
+        } else {
+            row.prev().insertAfter(row);
+        }
+
     });
 }
 
@@ -61,12 +54,16 @@ function generateId() {
     });
 }
 
-// Para cima, para baixo no limite certo
-//Delete linha
-//Edit in modal
-//Ordenar por categorias ** hacker edition
+function deleteRow() {
+    $('.fa-trash-alt').click(function () {
+        $(this).parents('tr').detach();
+      });
+}
 
 (() => {
     appendRow();
     generateId();
 })();
+
+//Edit in modal
+//Ordenar por categorias ** hacker edition
